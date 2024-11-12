@@ -31,7 +31,7 @@ jobs:
           cpanm --installdeps .
       - name: make pack
         run: |
-          cd lib
+          cd bin
           fatpack pack check_raid.pl >check_raid.packed.pl
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
