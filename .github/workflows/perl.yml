@@ -36,8 +36,9 @@ jobs:
       - run: cpanm --notest --installdeps --verbose .
       - run: perl -c -Ilib bin/check_raid.pl
       - run: make test
+      - run: make pack
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
-          name: perl-file
+          name: perl-file-${{ matrix.version }}
           path: bin/check_raid.pl
