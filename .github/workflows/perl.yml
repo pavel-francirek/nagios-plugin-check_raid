@@ -29,9 +29,12 @@ jobs:
         run: |
           cpanm --notest App::FatPacker
           cpanm --installdeps .
-      - run: make pack
+      - name: make pack
+        run: |
+          cd lib
+          fatpack pack check_raid.pl >check_raid.packed.pl
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
           name: perl-file-${{ matrix.perl-version }}
-          path: bin/check_raid.pl
+          path: bin/*.pl
